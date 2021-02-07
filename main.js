@@ -586,7 +586,7 @@ var srcUrl = './data/response.png';
         // ########### scale ###########
         function scaleCalcWidth(){
           var bot_right_after  =  [35.866040888101345, 31.976040413161023]                // bot_right_before_rotation "given"
-          var bot_left_after   =  [35.866045045032116,31.976182509469936]   
+          var bot_left_after   =  [35.866045045032116, 31.976182509469936]   
 
           var xDiff1 = image_bot_Lift[0] - image_bot_right[0];
           var yDiff1 = image_bot_Lift[1] - image_bot_right[1];

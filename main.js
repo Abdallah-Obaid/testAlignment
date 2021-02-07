@@ -639,15 +639,15 @@ var srcUrl = './data/response.png';
         function drawPointsLongLat(coordinate,color) {
           if (color == "red"){
           console.log({coordinate})
-          var excelPoints = new ol.Feature({
+          var red = new ol.Feature({
             geometry: new ol.geom.Point(coordinate),
             name: "red"
           });
-          var excelPoints = new ol.layer.Vector({
+          var red = new ol.layer.Vector({
             zIndex: 3,
             name: "red",
             source: new ol.source.Vector({
-                features: [excelPoints],
+                features: [red],
             }),
             style: new ol.style.Style({
                 image: new ol.style.Icon({
@@ -667,19 +667,19 @@ var srcUrl = './data/response.png';
             }),
           });
           
-          map.addLayer(excelPoints);
+          map.addLayer(red);
         }
         if (color == "green"){
           console.log({coordinate})
-          var excelPoints = new ol.Feature({
+          var green = new ol.Feature({
             geometry: new ol.geom.Point(coordinate),
             name: "green"
           });
-          var excelPoints = new ol.layer.Vector({
+          var green = new ol.layer.Vector({
             zIndex: 3,
             name: "green",
             source: new ol.source.Vector({
-                features: [excelPoints],
+                features: [green],
             }),
             style: new ol.style.Style({
                 image: new ol.style.Icon({
@@ -703,15 +703,15 @@ var srcUrl = './data/response.png';
         }
         if (color == "blue"){
           console.log({coordinate})
-          var excelPoints = new ol.Feature({
+          var blue = new ol.Feature({
             geometry: new ol.geom.Point(coordinate),
             name: "blue"
           });
-          var excelPoints = new ol.layer.Vector({
+          var blue = new ol.layer.Vector({
             zIndex: 3,
             name: "blue",
             source: new ol.source.Vector({
-                features: [excelPoints],
+                features: [blue],
             }),
             style: new ol.style.Style({
                 image: new ol.style.Icon({
@@ -735,15 +735,15 @@ var srcUrl = './data/response.png';
         }
         if (color == "orange"){
           console.log({coordinate})
-          var excelPoints = new ol.Feature({
+          var orange = new ol.Feature({
             geometry: new ol.geom.Point(coordinate),
             name: "orange"
           });
-          var excelPoints = new ol.layer.Vector({
+          var orange = new ol.layer.Vector({
             zIndex: 3,
             name: "orange",
             source: new ol.source.Vector({
-                features: [excelPoints],
+                features: [orange],
             }),
             style: new ol.style.Style({
                 image: new ol.style.Icon({
@@ -776,11 +776,11 @@ var srcUrl = './data/response.png';
             geometry: new ol.geom.Point(coordinate),
             name: "blue"
           });
-          var excelPoints = new ol.layer.Vector({
+          var blue = new ol.layer.Vector({
             zIndex: 3,
             name: "blue",
             source: new ol.source.Vector({
-                features: [excelPoints],
+                features: [blue],
             }),
             style: new ol.style.Style({
                 image: new ol.style.Icon({
@@ -804,15 +804,15 @@ var srcUrl = './data/response.png';
         }
         if (color == "orange"){
           console.log({coordinate})
-          var excelPoints = new ol.Feature({
+          var orange = new ol.Feature({
             geometry: new ol.geom.Point(coordinate),
             name: "orange"
           });
-          var excelPoints = new ol.layer.Vector({
+          var orange = new ol.layer.Vector({
             zIndex: 3,
             name: "orange",
             source: new ol.source.Vector({
-                features: [excelPoints],
+                features: [orange],
             }),
             style: new ol.style.Style({
                 image: new ol.style.Icon({

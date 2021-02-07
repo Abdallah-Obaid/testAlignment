@@ -772,7 +772,7 @@ var srcUrl = './data/response.png';
 
         if (color == "blue"){
           console.log({coordinate})
-          var excelPoints = new ol.Feature({
+          var blue = new ol.Feature({
             geometry: new ol.geom.Point(coordinate),
             name: "blue"
           });
@@ -800,7 +800,7 @@ var srcUrl = './data/response.png';
             }),
           });
           
-          map.addLayer(excelPoints);
+          map.addLayer(blue);
         }
         if (color == "orange"){
           console.log({coordinate})
@@ -832,7 +832,7 @@ var srcUrl = './data/response.png';
             }),
           });
           
-          map.addLayer(excelPoints);
+          map.addLayer(orange);
         }
 
         }

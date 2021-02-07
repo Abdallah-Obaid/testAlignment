@@ -851,45 +851,119 @@ var srcUrl = './data/response.png';
       //       });
       //  });
        
-       $('input[type=file]').on('change',function() {
+    //    $('input[type=file]').on('change',function() {
          
-         var newFile= this.files[0]
-        //  console.log({newFile},$(this).attr('name'))
-        var name = $(this).attr('name')
-             var filename = newFile.name;      
+    //      var newFile= this.files[0]
+    //     //  console.log({newFile},$(this).attr('name'))
+    //     var name = $(this).attr('name')
+    //          var filename = newFile.name;      
         
-        $.ajax({
-            type: "GET",
-            url: "./data/"+filename,
-            dataType: "text",
-            success: function(data) {processData(data,name);}
-         });
-    })
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "./data/"+filename,
+    //         dataType: "text",
+    //         success: function(data) {processData(data,name);}
+    //      });
+    // })
 
-       async function processData(Book1,color) {
-         console.log('Book1Book1Book1Book1',Book1,color)
-           "use strict";
-           var input = $.csv.toArrays(Book1);
-          //  console.log({input})
+    //    async function processData(Book1,color) {
+    //      console.log('Book1Book1Book1Book1',Book1,color)
+    //        "use strict";
+    //        var input = $.csv.toArrays(Book1);
+    //       //  console.log({input})
 
-          await map.getLayers().forEach(layer => {
-            if (layer && layer.get('name') === color) {
-                map.removeLayer(layer);
-            }
-        })
-        if(color == "red" || color == "green"){
-           input.forEach((ele)=>{
-            drawPointsLongLat(ele,color)
-           })
-          //  $("#test").append(input);
+    //       await map.getLayers().forEach(layer => {
+    //         if (layer && layer.get('name') === color) {
+    //             map.removeLayer(layer);
+    //         }
+    //     })
+    //     if(color == "red" || color == "green"){
+    //        input.forEach((ele)=>{
+    //         drawPointsLongLat(ele,color)
+    //        })
+    //       //  $("#test").append(input);
+    //     }
+    //     if(color == "blue" || color == "orange"){
+    //       input.forEach((ele)=>{
+    //         bot_left_after   =  [35.866045045032116,31.976182509469936] 
+    //         scale = [scaleX,scaleY]
+    //         console.log({ele})
+    //        drawPointsPexels(findPixelPoint(scale, bot_left_after, ele, rotationAngle),color)
+    //       })
+    //      //  $("#test").append(input);
+    //    }
+    //    }
+
+
+
+       function uploadDealcsv () {}; 
+
+  /*------ Method for read uploded csv file ------*/
+  uploadDealcsv.prototype.getCsv = function(e) {
+  
+      $('input[type=file]').on('change', function() {
+        var name = $(this).attr('name')
+        if (this.files && this.files[0]) {
+
+            var myFile = this.files[0];
+            var reader = new FileReader();
+            
+            reader.addEventListener('load', function (e) {
+                
+                let csvdata = e.target.result; 
+                parseCsv.getParsecsvdata(csvdata,name); // calling function for parse csv data 
+            });
+            
+            reader.readAsBinaryString(myFile);
         }
-        if(color == "blue" || color == "orange"){
-          input.forEach((ele)=>{
-            bot_left_after   =  [35.866045045032116,31.976182509469936] 
-            scale = [scaleX,scaleY]
-            console.log({ele})
-           drawPointsPexels(findPixelPoint(scale, bot_left_after, ele, rotationAngle),color)
-          })
-         //  $("#test").append(input);
+      });
+    }
+
+    /*------- Method for parse csv data and display --------------*/
+    uploadDealcsv.prototype.getParsecsvdata = function(data,name) {
+
+        let parsedata = [];
+
+        let newLinebrk = data.split("\n");
+        for(let i = 0; i < newLinebrk.length; i++) {
+
+            parsedata.push(newLinebrk[i].split(","))
+        }
+
+        console.log("parsedata",parsedata);
+        processData(parsedata,name)
+    }
+
+
+  
+  var parseCsv = new uploadDealcsv();
+  parseCsv.getCsv();
+
+
+  async function processData(data,color) {
+    console.log('Book1Book1Book1Book1',data,color)
+      "use strict";
+
+
+
+     await map.getLayers().forEach(layer => {
+       if (layer && layer.get('name') === color) {
+           map.removeLayer(layer);
        }
-       }
+   })
+   if(color == "red" || color == "green"){
+    data.forEach((ele)=>{
+       drawPointsLongLat(ele,color)
+      })
+     //  $("#test").append(input);
+   }
+   if(color == "blue" || color == "orange"){
+    data.forEach((ele)=>{
+       bot_left_after   =  [35.866045045032116,31.976182509469936] 
+       scale = [scaleX,scaleY]
+       console.log({ele})
+      drawPointsPexels(findPixelPoint(scale, bot_left_after, ele, rotationAngle),color)
+     })
+    //  $("#test").append(input);
+  }
+  }
